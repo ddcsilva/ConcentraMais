@@ -78,6 +78,7 @@ body {
     display: flex;
     justify-content: space-around;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .botao {
@@ -88,6 +89,7 @@ body {
     cursor: pointer;
     padding: 10px;
     transition: background 0.3s, color 0.3s;
+    margin: 5px;
 }
 
 .botao.selecionado {
@@ -200,4 +202,38 @@ input:checked + .deslizante:before {
 
 .rodape {
     margin-top: 20px;
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 767px) {
+    .titulo {
+        font-size: 2.5rem;
+    }
+    .frase {
+        font-size: 1.2rem;
+    }
+    .secao-temporizador {
+        padding: 20px;
+    }
+    .menu-cartao {
+        flex-direction: column;
+        align-items: center;
+    }
+    .botao {
+        font-size: 1rem;
+        padding: 8px;
+        width: 80%;
+    }
+    .temporizador {
+        font-size: 3.5rem;
+    }
+    .botoes-controle {
+        flex-direction: column;
+        align-items: center;
+    }
+    .botao-principal,
+    .botao-reiniciar {
+        width: 80%;
+        margin-bottom: 10px;
+    }
 }
