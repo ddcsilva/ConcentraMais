@@ -8,16 +8,29 @@ const displayTemporizador = document.querySelector('#temporizador');
 const infoIcon = document.querySelector('#info-icon');
 const modal = document.querySelector('#modal-explicacao');
 const fecharModal = document.querySelector('#fechar-modal');
-
-const musica = new Audio('sons/lofi-study.mp3');
-musica.loop = true;
+const rotuloMusica = document.querySelector('.rotulo-alternancia');
+const botaoShuffle = document.querySelector('#botao-shuffle');
 
 const somIniciar = new Audio('sons/start.wav');
 const somPausar = new Audio('sons/pause.wav');
 const somTermino = new Audio('sons/finish.mp3');
 
+const musicas = [
+    'sons/music1.mp3',
+    'sons/music2.mp3',
+    'sons/music3.mp3',
+    'sons/music4.mp3',
+    'sons/music5.mp3',
+    'sons/music6.mp3'
+];
+
 let intervaloId = null;
 let tempoRestante;
+let musicaAtual = 0;
+let musicasTocadas = [];
+
+const musica = new Audio(musicas[musicaAtual]);
+musica.loop = true;
 
 const tempos = {
     'foco': 25 * 60,
@@ -64,6 +77,10 @@ window.addEventListener('click', (event) => {
     }
 });
 
+botaoShuffle.addEventListener('click', () => {
+    trocarMusicaAleatoria();
+});
+
 function alterarModo(modo) {
     html.setAttribute('data-modo', modo);
     frase.innerHTML = frases[modo] || '';
@@ -90,6 +107,11 @@ function iniciarTemporizador() {
     desabilitarBotoes(true);
     botaoReiniciar.disabled = true;
     botaoReiniciar.classList.add('desabilitado');
+    inputMusica.disabled = false;
+    rotuloMusica.classList.remove('desabilitado');
+    inputMusica.classList.remove('desabilitado');
+    botaoShuffle.disabled = false;
+    botaoShuffle.classList.remove('desabilitado');
 }
 
 function pausarTemporizador() {
@@ -100,6 +122,17 @@ function pausarTemporizador() {
     desabilitarBotoes(false);
     botaoReiniciar.disabled = false;
     botaoReiniciar.classList.remove('desabilitado');
+
+    if (!musica.paused) {
+        musica.pause();
+        inputMusica.checked = false;
+    }
+
+    inputMusica.disabled = true;
+    rotuloMusica.classList.add('desabilitado');
+    inputMusica.classList.add('desabilitado');
+    botaoShuffle.disabled = true;
+    botaoShuffle.classList.add('desabilitado');
 }
 
 function resetarTemporizador(modo, tocarSom = true) {
@@ -113,6 +146,11 @@ function resetarTemporizador(modo, tocarSom = true) {
     atualizarDisplayTemporizador();
     botaoReiniciar.disabled = true;
     botaoReiniciar.classList.add('desabilitado');
+    inputMusica.disabled = true;
+    rotuloMusica.classList.add('desabilitado');
+    inputMusica.classList.add('desabilitado');
+    botaoShuffle.disabled = true;
+    botaoShuffle.classList.add('desabilitado');
 }
 
 function contagemRegressiva() {
@@ -151,5 +189,23 @@ function reiniciarTemporizador() {
     desabilitarBotoes(false);
 }
 
-// Inicializar display do temporizador com o modo padrão (foco)
+function trocarMusicaAleatoria() {
+    let musicasRestantes = musicas.filter(musica => !musicasTocadas.includes(musica));
+
+    if (musicasRestantes.length === 0) {
+        musicasTocadas = [];
+        musicasRestantes = [...musicas];
+    }
+
+    const indiceAleatorio = Math.floor(Math.random() * musicasRestantes.length);
+    const novaMusica = musicasRestantes[indiceAleatorio];
+
+    musicasTocadas.push(novaMusica);
+    musica.src = novaMusica;
+
+    if (inputMusica.checked) {
+        musica.play();
+    }
+}
+
 resetarTemporizador('foco', false);
