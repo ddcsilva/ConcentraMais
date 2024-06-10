@@ -10,7 +10,7 @@ const musica = new Audio('sons/lofi-study.mp3');
 musica.loop = true;
 
 inputMusica.addEventListener('change', () => {
-    if (musica.paused) {
+    if (inputMusica.checked) {
         musica.play();
     } else {
         musica.pause();
