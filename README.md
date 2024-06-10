@@ -49,6 +49,10 @@ Lógica do temporizador, controle de música e funcionalidade dos botões.
 - Para mudar as frases de cada modo, edite o objeto `frases` em `script.js`.
 - Para adicionar ou modificar sons, adicione arquivos de áudio na pasta `sons` e atualize os caminhos nos respectivos objetos `Audio` em `script.js`.
 
+## Licença de Músicas
+
+As músicas utilizadas neste projeto são provenientes do [Pixabay](https://pixabay.com/pt), que fornece conteúdos livres de royalties.
+
 ## Contribuição
 
 Se você quiser contribuir com este projeto, sinta-se à vontade para abrir um pull request ou enviar uma issue com sugestões e melhorias.
