@@ -5,7 +5,7 @@ const botaoIniciarPausar = document.querySelector('#iniciar-pausar');
 const botaoReiniciar = document.querySelector('#reiniciar');
 const inputMusica = document.querySelector('#alternancia-musica');
 const displayTemporizador = document.querySelector('#temporizador');
-const infoIcon = document.querySelector('#info-icon');
+const iconeInformativo = document.querySelector('#info-icon');
 const modal = document.querySelector('#modal-explicacao');
 const fecharModal = document.querySelector('#fechar-modal');
 const rotuloMusica = document.querySelector('.rotulo-alternancia');
@@ -63,7 +63,7 @@ botoes.forEach(botao => {
 botaoIniciarPausar.addEventListener('click', iniciarOuPausar);
 botaoReiniciar.addEventListener('click', reiniciarTemporizador);
 
-infoIcon.addEventListener('click', () => {
+iconeInformativo.addEventListener('click', () => {
     modal.style.display = 'flex';
 });
 
@@ -195,15 +195,15 @@ function reiniciarTemporizador() {
 }
 
 function trocarMusicaAleatoria() {
-    let musicasRestantes = musicas.filter(musica => !musicasTocadas.includes(musica));
+    let musicasRestantes = musicas.filter((musica, index) => index !== musicaAtual);
 
-    if (musicasRestantes.length === 0) {
+    if (musicasTocadas.length === musicas.length - 1) {
         musicasTocadas = [];
-        musicasRestantes = [...musicas];
     }
 
     const indiceAleatorio = Math.floor(Math.random() * musicasRestantes.length);
     const novaMusica = musicasRestantes[indiceAleatorio];
+    musicaAtual = musicas.indexOf(novaMusica);
 
     musicasTocadas.push(novaMusica);
     musica.src = novaMusica;
