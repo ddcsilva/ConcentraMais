@@ -1,0 +1,186 @@
+:root {
+    --cor-primaria: #6A5ACD;
+    --cor-secundaria: #FFFFFF;
+    --fundo-cartao: rgba(106, 90, 205, 0.2);
+    --cor-botao: #6A5ACD;
+    --botao-hover: #7B68EE;
+    --fonte-principal: 'Montserrat', sans-serif;
+    --fonte-negrito: 'Montserrat', sans-serif;
+}
+
+[data-modo="foco"] {
+    --degrade-fundo: linear-gradient(180deg, #8B1FF8 0%, #041832 48.44%, #01080E 100%);
+}
+
+[data-modo="descanso-curto"] {
+    --degrade-fundo: linear-gradient(180deg, #0F725C 0%, #041832 48.44%, #01080E 100%);
+}
+
+[data-modo="descanso-longo"] {
+    --degrade-fundo: linear-gradient(180deg, #1875E9 0%, #041832 48.44%, #01080E 100%);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--fonte-principal);
+}
+
+body {
+    background: var(--degrade-fundo);
+    color: var(--cor-secundaria);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.aplicativo {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.cabecalho {
+    margin-bottom: 20px;
+}
+
+.titulo {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.banner {
+    margin-bottom: 20px;
+}
+
+.frase {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.frase strong {
+    font-weight: 700;
+}
+
+.secao-temporizador {
+    background: var(--fundo-cartao);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.menu-cartao {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.botao {
+    background: none;
+    border: none;
+    color: var(--cor-secundaria);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 10px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.botao.selecionado {
+    background: var(--cor-primaria);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #FFF;
+}
+
+.botao.selecionado:hover {
+    background: var(--botao-hover);
+}
+
+.temporizador {
+    font-size: 5rem;
+    margin-bottom: 20px;
+}
+
+.controles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.alternancia {
+    position: relative;
+    width: 40px;
+    height: 20px;
+}
+
+.alternancia input {
+    display: none;
+}
+
+.deslizante {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.deslizante:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+input:checked + .deslizante {
+    background: var(--cor-botao);
+}
+
+input:checked + .deslizante:before {
+    transform: translateX(20px);
+}
+
+.rotulo-alternancia {
+    margin-left: 10px;
+}
+
+.botao-principal {
+    background: var(--cor-botao);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--cor-secundaria);
+    font-size: 1rem;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.botao-principal:hover {
+    background: var(--botao-hover);
+}
+
+.icone-botao {
+    margin-right: 10px;
+}
+
+.rodape {
+    margin-top: 20px;
+}
