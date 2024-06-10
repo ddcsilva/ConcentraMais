@@ -156,9 +156,14 @@ function resetarTemporizador(modo, tocarSom = true) {
 function contagemRegressiva() {
     if (tempoRestante === 0) {
         somTermino.play();
-        alert('Tempo Encerrado!');
         const modoAtual = html.getAttribute('data-modo');
         resetarTemporizador(modoAtual, false);
+        botaoIniciarPausar.innerHTML = '<i class="fas fa-play icone-botao"></i> Iniciar';
+        desabilitarBotoes(false);
+        if (!musica.paused) {
+            musica.pause();
+            inputMusica.checked = false;
+        }
         return;
     }
     tempoRestante--;
@@ -208,4 +213,5 @@ function trocarMusicaAleatoria() {
     }
 }
 
+// Inicializar display do temporizador com o modo padrão (foco)
 resetarTemporizador('foco', false);
