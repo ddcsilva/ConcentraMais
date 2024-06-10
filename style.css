@@ -184,7 +184,7 @@ input:checked + .deslizante:before {
 .botao-reiniciar {
     background: var(--cor-botao);
     border: none;
-    padding: 10px 20px;
+    padding: 10px;
     border-radius: 5px;
     cursor: pointer;
     color: var(--cor-secundaria);
@@ -193,6 +193,9 @@ input:checked + .deslizante:before {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 1;
+    margin: 5px;
+    min-width: 120px; /* Garantir que os botões tenham a mesma largura mínima */
 }
 
 .botao-principal:hover,
@@ -239,6 +242,16 @@ input:checked + .deslizante:before {
     color: #333;
     font-family: var(--fonte-principal);
     text-align: left;
+    line-height: 1.6;
+}
+
+.modal-conteudo h2, .modal-conteudo h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.modal-conteudo p {
+    margin-bottom: 5px;
 }
 
 .fechar {
