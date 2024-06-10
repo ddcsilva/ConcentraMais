@@ -6,6 +6,7 @@
     --botao-hover: #7B68EE;
     --fonte-principal: 'Montserrat', sans-serif;
     --fonte-negrito: 'Montserrat', sans-serif;
+    --cor-desabilitada: #A9A9A9;
 }
 
 [data-modo="foco"] {
@@ -100,6 +101,11 @@ body {
     background: var(--botao-hover);
 }
 
+.botao.desabilitado {
+    color: var(--cor-desabilitada);
+    cursor: not-allowed;
+}
+
 .temporizador {
     font-size: 5rem;
     margin-bottom: 20px;
@@ -158,7 +164,13 @@ input:checked + .deslizante:before {
     margin-left: 10px;
 }
 
-.botao-principal {
+.botoes-controle {
+    display: flex;
+    justify-content: space-around;
+}
+
+.botao-principal,
+.botao-reiniciar {
     background: var(--cor-botao);
     border: none;
     padding: 10px 20px;
@@ -170,11 +182,16 @@ input:checked + .deslizante:before {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
 }
 
-.botao-principal:hover {
+.botao-principal:hover,
+.botao-reiniciar:hover {
     background: var(--botao-hover);
+}
+
+.botao-reiniciar.desabilitado {
+    background: var(--cor-desabilitada);
+    cursor: not-allowed;
 }
 
 .icone-botao {
