@@ -6,9 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ConcentraMais</title>
     <link rel="shortcut icon" href="./imagens/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/e70617fbb4.js" crossorigin="anonymous"></script>
+    <script>
+        // Script para evitar cache de arquivos CSS
+        const version = new Date().getTime();
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = `style.css?v=${version}`;
+        document.head.appendChild(link);
+    </script>
     <script src="script.js" defer></script>
 </head>
 
