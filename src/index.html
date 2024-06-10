@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-modo="foco">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConcentraMais</title>
+    <link rel="shortcut icon" href="./imagens/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e70617fbb4.js" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <main class="aplicativo">
+        <header class="cabecalho">
+            <h1 class="titulo">ConcentraMais</h1>
+        </header>
+        <section class="banner">
+            <h2 class="frase">Aprimore sua eficiência,<br> <strong>concentre-se no essencial</strong>.</h2>
+        </section>
+        <section class="secao-temporizador">
+            <div class="cartao">
+                <ul class="menu-cartao">
+                    <li><button class="botao botao-foco selecionado" data-modo="foco">Foco</button></li>
+                    <li><button class="botao botao-descanso-curto" data-modo="descanso-curto">Descanso Curto</button></li>
+                    <li><button class="botao botao-descanso-longo" data-modo="descanso-longo">Descanso Longo</button></li>
+                </ul>
+                <div id="temporizador" class="temporizador">25:00</div>
+                <div class="controles">
+                    <label class="alternancia">
+                        <input type="checkbox" id="alternancia-musica">
+                        <span class="deslizante"></span>
+                    </label>
+                    <span class="rotulo-alternancia">Música</span>
+                </div>
+                <button id="iniciar-pausar" class="botao-principal">
+                    <i class="fas fa-play icone-botao"></i> Iniciar
+                </button>
+            </div>
+        </section>
+        <footer class="rodape">
+            <p>Desenvolvido por Danilo. Projeto fictício para fins educacionais.</p>
+        </footer>
+    </main>
+</body>
+
+</html>
