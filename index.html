@@ -22,6 +22,7 @@
         </section>
         <section class="secao-temporizador">
             <div class="cartao">
+                <i class="fas fa-question-circle info-icon" id="info-icon"></i>
                 <ul class="menu-cartao">
                     <li><button class="botao botao-foco selecionado" data-modo="foco">Foco</button></li>
                     <li><button class="botao botao-descanso-curto" data-modo="descanso-curto">Descanso Curto</button></li>
@@ -46,8 +47,22 @@
             </div>
         </section>
         <footer class="rodape">
-            <p>Desenvolvido por Danilo. © 2024</p>
+            <p>Por Danilo. © 2024</p>
         </footer>
+
+        <!-- Modal para explicação -->
+        <div id="modal-explicacao" class="modal">
+            <div class="modal-conteudo">
+                <span class="fechar" id="fechar-modal">&times;</span>
+                <h2>O que é Pomodoro?</h2>
+                <p>O método Pomodoro é uma técnica de gerenciamento de tempo que utiliza um temporizador para dividir o trabalho em intervalos, tradicionalmente de 25 minutos, separados por breves intervalos. Cada intervalo é conhecido como um pomodoro, do italiano "tomate", em homenagem ao temporizador de cozinha em forma de tomate usado pelo criador da técnica.</p>
+                <h3>Como usar o ConcentraMais</h3>
+                <p>1. Selecione o modo de foco, descanso curto ou descanso longo.</p>
+                <p>2. Clique em Iniciar para começar o temporizador.</p>
+                <p>3. Trabalhe até que o temporizador indique o fim do período.</p>
+                <p>4. Faça uma pausa durante os intervalos de descanso para recarregar as energias.</p>
+            </div>
+        </div>
     </main>
 </body>
 

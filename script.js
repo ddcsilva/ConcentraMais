@@ -5,6 +5,9 @@ const botaoIniciarPausar = document.querySelector('#iniciar-pausar');
 const botaoReiniciar = document.querySelector('#reiniciar');
 const inputMusica = document.querySelector('#alternancia-musica');
 const displayTemporizador = document.querySelector('#temporizador');
+const infoIcon = document.querySelector('#info-icon');
+const modal = document.querySelector('#modal-explicacao');
+const fecharModal = document.querySelector('#fechar-modal');
 
 const musica = new Audio('sons/lofi-study.mp3');
 musica.loop = true;
@@ -46,6 +49,20 @@ botoes.forEach(botao => {
 
 botaoIniciarPausar.addEventListener('click', iniciarOuPausar);
 botaoReiniciar.addEventListener('click', reiniciarTemporizador);
+
+infoIcon.addEventListener('click', () => {
+    modal.style.display = 'flex';
+});
+
+fecharModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
 
 function alterarModo(modo) {
     html.setAttribute('data-modo', modo);
