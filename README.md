@@ -7,9 +7,10 @@ ConcentraMais é um aplicativo de temporizador Pomodoro desenvolvido em HTML, CS
 - **Modo Foco**: Temporizador de 25 minutos para sessões de foco.
 - **Descanso Curto**: Temporizador de 5 minutos para pequenos intervalos.
 - **Descanso Longo**: Temporizador de 15 minutos para intervalos mais longos.
-- **Controle de Música**: Opção para tocar música de fundo durante a sessão de foco.
+- **Controle de Música**: Opção para tocar música de fundo durante a sessão de foco, incluindo a função shuffle para trocar aleatoriamente entre diferentes músicas.
 - **Botão Iniciar/Pausar**: Inicie ou pause o temporizador conforme necessário.
 - **Botão Reiniciar**: Redefina o temporizador para o início da sessão atual.
+- **Explicação Integrada**: Ícone de informação para abrir um modal com explicação sobre o método Pomodoro e como usar o aplicativo.
 
 ## Tecnologias Utilizadas
 
