@@ -149,13 +149,13 @@ class ConcentraMais {
   // === MÉTODOS DE ESTATÍSTICAS ===
   aoExportarDados() {
     const dados = this.gerenciadorEstatisticas.exportarDados();
-    const dataFormatada = new Date().toLocaleDateString('pt-BR');
-    const nomeArquivo = `concentraMais_estatisticas_${dataFormatada.replace(/\//g, '-')}.json`;
+    const dataFormatada = new Date().toLocaleDateString("pt-BR");
+    const nomeArquivo = `concentraMais_estatisticas_${dataFormatada.replace(/\//g, "-")}.json`;
 
-    const blob = new Blob([JSON.stringify(dados, null, 2)], { type: 'application/json' });
+    const blob = new Blob([JSON.stringify(dados, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
 
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = url;
     link.download = nomeArquivo;
     document.body.appendChild(link);
@@ -165,10 +165,10 @@ class ConcentraMais {
   }
 
   aoResetarEstatisticas() {
-    if (confirm('Tem certeza que deseja resetar todas as estatísticas? Esta ação não pode ser desfeita.')) {
+    if (confirm("Tem certeza que deseja resetar todas as estatísticas? Esta ação não pode ser desfeita.")) {
       this.gerenciadorEstatisticas.resetarEstatisticas();
       this.atualizarEstatisticasInterface();
-      alert('Estatísticas resetadas com sucesso!');
+      alert("Estatísticas resetadas com sucesso!");
     }
   }
 
@@ -186,7 +186,12 @@ class ConcentraMais {
   }
 }
 
+// Interceptar evento de abertura do modal de estatísticas para atualizar dados
 document.addEventListener("DOMContentLoaded", () => {
+  // Inicializar utilidades gerais (ano dinâmico, etc.)
+  Utilitarios.inicializar();
+
+  // Inicializar aplicação principal
   const app = new ConcentraMais();
 
   // Adicionar listener para atualizar estatísticas ao abrir o modal

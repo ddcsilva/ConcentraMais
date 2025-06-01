@@ -72,6 +72,15 @@
     height: 35px;
     font-size: 1rem;
   }
+
+  /* Ícone de ajuda responsivo */
+  .info-icon {
+    top: var(--espacamento-medio);
+    right: var(--espacamento-medio);
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
 }
 
 /* === SMARTPHONES PEQUENOS === */
@@ -103,9 +112,11 @@
   }
 
   .info-icon {
-    top: var(--espacamento-medio);
-    right: var(--espacamento-medio);
-    font-size: 1.2rem;
+    top: var(--espacamento-pequeno);
+    right: var(--espacamento-pequeno);
+    width: 26px;
+    height: 26px;
+    font-size: 0.8rem;
   }
 
   .botao {

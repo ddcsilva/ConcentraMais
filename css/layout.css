@@ -66,16 +66,33 @@
 
 .info-icon {
   position: absolute;
-  top: var(--espacamento-grande);
-  right: var(--espacamento-grande);
-  font-size: 1.4rem;
+  top: var(--espacamento-medio);
+  right: var(--espacamento-medio);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
-  opacity: 0.8;
-  transition: opacity var(--transicao-rapida);
+  transition: all var(--transicao-rapida);
+  backdrop-filter: blur(10px);
+  z-index: 5;
 }
 
 .info-icon:hover {
-  opacity: 1;
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--cor-secundaria);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.info-icon:active {
+  transform: scale(0.95);
 }
 
 .icone-botao {

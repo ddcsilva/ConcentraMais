@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-br" data-modo="foco">
   <head>
+    <!-- Meta informações básicas -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ConcentraMais</title>
+    <meta name="description" content="ConcentraMais - Aplicativo Pomodoro para melhorar sua produtividade e foco. Técnica comprovada de gerenciamento de tempo." />
+    <meta name="keywords" content="pomodoro, produtividade, foco, temporizador, concentração, trabalho" />
+    <meta name="author" content="Danilo" />
+
+    <!-- Meta tags para redes sociais -->
+    <meta property="og:title" content="ConcentraMais - Pomodoro Timer" />
+    <meta property="og:description" content="Melhore sua produtividade com a técnica Pomodoro" />
+    <meta property="og:type" content="website" />
+
+    <title>ConcentraMais - Timer Pomodoro</title>
+
+    <!-- Ícones e fontes -->
     <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/e70617fbb4.js" crossorigin="anonymous"></script>
 
     <!-- Estilos CSS organizados em módulos -->
@@ -30,143 +44,321 @@
   </head>
 
   <body>
-    <main class="aplicativo">
+    <!-- ===== APLICAÇÃO PRINCIPAL ===== -->
+    <div class="aplicativo" role="main">
+
+      <!-- ===== CABEÇALHO ===== -->
       <header class="cabecalho">
         <h1 class="titulo">ConcentraMais</h1>
-        <button class="botao-estatisticas" id="botao-estatisticas" title="Ver Estatísticas">
-          <i class="fas fa-chart-bar"></i>
-        </button>
+        <nav aria-label="Ações do aplicativo">
+          <button
+            class="botao-estatisticas"
+            id="botao-estatisticas"
+            type="button"
+            title="Ver suas estatísticas de produtividade"
+            aria-label="Abrir estatísticas"
+          >
+            <i class="fas fa-chart-bar" aria-hidden="true"></i>
+          </button>
+        </nav>
       </header>
-      <section class="banner">
-        <h2 class="frase">
+
+      <!-- ===== BANNER DESCRITIVO ===== -->
+      <section class="banner" aria-labelledby="banner-titulo">
+        <h2 id="banner-titulo" class="frase">
           Aprimore sua eficiência,<br />
           <strong>concentre-se no essencial</strong>.
         </h2>
       </section>
-      <section class="secao-temporizador">
+
+      <!-- ===== TEMPORIZADOR PRINCIPAL ===== -->
+      <section class="secao-temporizador" aria-labelledby="temporizador-titulo">
+        <h2 id="temporizador-titulo" class="sr-only">Temporizador Pomodoro</h2>
+
         <div class="cartao">
-          <i class="fas fa-question-circle info-icon" id="info-icon"></i>
-          <ul class="menu-cartao">
-            <li><button class="botao botao-foco selecionado" data-modo="foco">Foco</button></li>
-            <li><button class="botao botao-descanso-curto" data-modo="descanso-curto">Descanso Curto</button></li>
-            <li><button class="botao botao-descanso-longo" data-modo="descanso-longo">Descanso Longo</button></li>
-          </ul>
-          <div class="container-temporizador">
-            <div class="indicador-progresso">
-              <svg class="circulo-progresso" viewBox="0 0 160 160">
+          <!-- Botão de ajuda -->
+          <button
+            class="info-icon"
+            id="info-icon"
+            type="button"
+            title="Aprenda sobre a técnica Pomodoro"
+            aria-label="Informações sobre Pomodoro"
+          >
+            <i class="fas fa-question-circle" aria-hidden="true"></i>
+          </button>
+
+          <!-- Menu de modos -->
+          <nav aria-label="Modos do temporizador">
+            <ul class="menu-cartao" role="tablist">
+              <li role="none">
+                <button
+                  class="botao botao-foco selecionado"
+                  data-modo="foco"
+                  type="button"
+                  role="tab"
+                  aria-selected="true"
+                  aria-controls="temporizador-display"
+                >
+                  Foco
+                </button>
+              </li>
+              <li role="none">
+                <button
+                  class="botao botao-descanso-curto"
+                  data-modo="descanso-curto"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="temporizador-display"
+                >
+                  Descanso Curto
+                </button>
+              </li>
+              <li role="none">
+                <button
+                  class="botao botao-descanso-longo"
+                  data-modo="descanso-longo"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="temporizador-display"
+                >
+                  Descanso Longo
+                </button>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Display do temporizador -->
+          <div class="container-temporizador" role="tabpanel" id="temporizador-display">
+            <!-- Indicador de progresso -->
+            <div class="indicador-progresso" aria-hidden="true">
+              <svg
+                class="circulo-progresso"
+                viewBox="0 0 160 160"
+                role="img"
+                aria-label="Progresso do temporizador"
+              >
                 <circle class="circulo-fundo" cx="80" cy="80" r="80"></circle>
-                <circle class="circulo-preenchimento" cx="80" cy="80" r="80" id="circulo-progresso"></circle>
+                <circle
+                  class="circulo-preenchimento"
+                  cx="80"
+                  cy="80"
+                  r="80"
+                  id="circulo-progresso"
+                ></circle>
               </svg>
             </div>
-            <div id="temporizador" class="temporizador">25:00</div>
+
+            <!-- Tempo restante -->
+            <time
+              id="temporizador"
+              class="temporizador"
+              aria-live="polite"
+              aria-label="Tempo restante"
+            >
+              25:00
+            </time>
           </div>
-          <div class="controles">
-            <label class="alternancia">
-              <input type="checkbox" id="alternancia-musica" />
-              <span class="deslizante"></span>
+
+          <!-- Controles de música -->
+          <div class="controles" role="group" aria-labelledby="controles-musica">
+            <span id="controles-musica" class="sr-only">Controles de música</span>
+
+            <label class="alternancia" for="alternancia-musica">
+              <input
+                type="checkbox"
+                id="alternancia-musica"
+                aria-describedby="label-musica"
+              />
+              <span class="deslizante" aria-hidden="true"></span>
             </label>
-            <span class="rotulo-alternancia">Música</span>
-            <button id="botao-shuffle" class="botao-shuffle" disabled>
-              <i class="fas fa-random"></i>
+
+            <span id="label-musica" class="rotulo-alternancia">Música</span>
+
+            <button
+              id="botao-shuffle"
+              class="botao-shuffle"
+              type="button"
+              disabled
+              title="Música aleatória"
+              aria-label="Trocar música aleatoriamente"
+            >
+              <i class="fas fa-random" aria-hidden="true"></i>
             </button>
           </div>
-          <div class="botoes-controle">
-            <button id="iniciar-pausar" class="botao-principal"><i class="fas fa-play icone-botao"></i> Iniciar</button>
-            <button id="reiniciar" class="botao-reiniciar desabilitado" disabled>
-              <i class="fas fa-undo icone-botao"></i> Reiniciar
+
+          <!-- Botões principais -->
+          <div class="botoes-controle" role="group" aria-labelledby="controles-principais">
+            <span id="controles-principais" class="sr-only">Controles do temporizador</span>
+
+            <button
+              id="iniciar-pausar"
+              class="botao-principal"
+              type="button"
+              aria-describedby="temporizador"
+            >
+              <i class="fas fa-play icone-botao" aria-hidden="true"></i> Iniciar
+            </button>
+
+            <button
+              id="reiniciar"
+              class="botao-reiniciar desabilitado"
+              type="button"
+              disabled
+              aria-describedby="temporizador"
+            >
+              <i class="fas fa-undo icone-botao" aria-hidden="true"></i> Reiniciar
             </button>
           </div>
         </div>
       </section>
-      <footer class="rodape">
-        <p>Desenvolvido por Danilo. © 2024</p>
-      </footer>
 
-      <!-- Modal para explicação -->
-      <div id="modal-explicacao" class="modal">
-        <div class="modal-conteudo">
-          <span class="fechar" id="fechar-modal">&times;</span>
-          <h2>O que é Pomodoro?</h2>
+      <!-- ===== RODAPÉ ===== -->
+      <footer class="rodape">
+        <p>Desenvolvido por Danilo. © <span id="ano-atual">2024</span></p>
+      </footer>
+    </div>
+
+    <!-- ===== MODAIS ===== -->
+
+    <!-- Modal de explicação do Pomodoro -->
+    <div id="modal-explicacao" class="modal" role="dialog" aria-labelledby="modal-titulo" aria-hidden="true">
+      <div class="modal-conteudo">
+        <button
+          class="fechar"
+          id="fechar-modal"
+          type="button"
+          aria-label="Fechar modal"
+          title="Fechar"
+        >
+          &times;
+        </button>
+
+        <h2 id="modal-titulo">O que é Pomodoro?</h2>
+
+        <div class="modal-corpo">
           <p>
             O método Pomodoro é uma técnica de gerenciamento de tempo que utiliza um temporizador para dividir o
             trabalho em intervalos, tradicionalmente de 25 minutos, separados por breves intervalos. Cada intervalo é
             conhecido como um pomodoro, do italiano "tomate", em homenagem ao temporizador de cozinha em forma de tomate
             usado pelo criador da técnica.
           </p>
+
           <h3>Como usar o ConcentraMais</h3>
-          <p>1. Selecione o modo de foco, descanso curto ou descanso longo.</p>
-          <p>2. Clique em Iniciar para começar o temporizador.</p>
-          <p>3. Trabalhe até que o temporizador indique o fim do período.</p>
-          <p>4. Faça uma pausa durante os intervalos de descanso para recarregar as energias.</p>
+          <ol>
+            <li>Selecione o modo de foco, descanso curto ou descanso longo.</li>
+            <li>Clique em Iniciar para começar o temporizador.</li>
+            <li>Trabalhe até que o temporizador indique o fim do período.</li>
+            <li>Faça uma pausa durante os intervalos de descanso para recarregar as energias.</li>
+          </ol>
         </div>
       </div>
+    </div>
 
-      <!-- Modal de Estatísticas -->
-      <div id="modal-estatisticas" class="modal">
-        <div class="modal-conteudo modal-estatisticas">
-          <span class="fechar" id="fechar-modal-estatisticas">&times;</span>
+    <!-- Modal de estatísticas -->
+    <div
+      id="modal-estatisticas"
+      class="modal"
+      role="dialog"
+      aria-labelledby="estatisticas-titulo"
+      aria-hidden="true"
+    >
+      <div class="modal-conteudo modal-estatisticas">
+        <button
+          class="fechar"
+          id="fechar-modal-estatisticas"
+          type="button"
+          aria-label="Fechar estatísticas"
+          title="Fechar"
+        >
+          &times;
+        </button>
 
-          <h2><i class="fas fa-chart-bar"></i> Suas Estatísticas</h2>
+        <h2 id="estatisticas-titulo">
+          <i class="fas fa-chart-bar" aria-hidden="true"></i> Suas Estatísticas
+        </h2>
 
-          <!-- Estatísticas de Hoje -->
-          <div class="secao-estatisticas">
-            <h3>📅 HOJE</h3>
-            <div class="cards-estatisticas">
-              <div class="card-estatistica">
-                <div class="numero-estatistica" id="sessoes-hoje">0</div>
-                <div class="label-estatistica">Sessões<br />Completas</div>
-              </div>
-              <div class="card-estatistica">
-                <div class="numero-estatistica" id="tempo-hoje">0min</div>
-                <div class="label-estatistica">Tempo<br />Focado</div>
-              </div>
-              <div class="card-estatistica">
-                <div class="numero-estatistica" id="sequencia-atual">0</div>
-                <div class="label-estatistica">Sequência<br />Atual</div>
-              </div>
+        <!-- Estatísticas de hoje -->
+        <section class="secao-estatisticas" aria-labelledby="hoje-titulo">
+          <h3 id="hoje-titulo">📅 HOJE</h3>
+          <div class="cards-estatisticas" role="group">
+            <div class="card-estatistica">
+              <div class="numero-estatistica" id="sessoes-hoje" aria-label="0 sessões completas hoje">0</div>
+              <div class="label-estatistica">Sessões<br />Completas</div>
+            </div>
+            <div class="card-estatistica">
+              <div class="numero-estatistica" id="tempo-hoje" aria-label="0 minutos focados hoje">0min</div>
+              <div class="label-estatistica">Tempo<br />Focado</div>
+            </div>
+            <div class="card-estatistica">
+              <div class="numero-estatistica" id="sequencia-atual" aria-label="Sequência atual de 0">0</div>
+              <div class="label-estatistica">Sequência<br />Atual</div>
             </div>
           </div>
+        </section>
 
-          <!-- Estatísticas Gerais -->
-          <div class="secao-estatisticas">
-            <h3>🏆 ESTATÍSTICAS GERAIS</h3>
-            <div class="cards-estatisticas">
-              <div class="card-estatistica">
-                <div class="numero-estatistica" id="total-sessoes">0</div>
-                <div class="label-estatistica">Total de<br />Sessões</div>
-              </div>
-              <div class="card-estatistica">
-                <div class="numero-estatistica" id="tempo-total">0h</div>
-                <div class="label-estatistica">Tempo Total<br />Focado</div>
-              </div>
-              <div class="card-estatistica">
-                <div class="numero-estatistica" id="melhor-sequencia">0</div>
-                <div class="label-estatistica">Melhor<br />Sequência</div>
-              </div>
-              <div class="card-estatistica">
-                <div class="numero-estatistica" id="dias-ativos">0</div>
-                <div class="label-estatistica">Dias<br />Ativos</div>
-              </div>
+        <!-- Estatísticas gerais -->
+        <section class="secao-estatisticas" aria-labelledby="geral-titulo">
+          <h3 id="geral-titulo">🏆 ESTATÍSTICAS GERAIS</h3>
+          <div class="cards-estatisticas" role="group">
+            <div class="card-estatistica">
+              <div class="numero-estatistica" id="total-sessoes" aria-label="0 sessões totais">0</div>
+              <div class="label-estatistica">Total de<br />Sessões</div>
+            </div>
+            <div class="card-estatistica">
+              <div class="numero-estatistica" id="tempo-total" aria-label="0 horas totais">0h</div>
+              <div class="label-estatistica">Tempo Total<br />Focado</div>
+            </div>
+            <div class="card-estatistica">
+              <div class="numero-estatistica" id="melhor-sequencia" aria-label="Melhor sequência de 0">0</div>
+              <div class="label-estatistica">Melhor<br />Sequência</div>
+            </div>
+            <div class="card-estatistica">
+              <div class="numero-estatistica" id="dias-ativos" aria-label="0 dias ativos">0</div>
+              <div class="label-estatistica">Dias<br />Ativos</div>
             </div>
           </div>
+        </section>
 
-          <!-- Gráfico da Semana -->
-          <div class="secao-estatisticas">
-            <h3>📊 ÚLTIMOS 7 DIAS</h3>
-            <div class="grafico-semana" id="grafico-semana">
-              <!-- Será preenchido dinamicamente -->
-            </div>
+        <!-- Gráfico da semana -->
+        <section class="secao-estatisticas" aria-labelledby="semana-titulo">
+          <h3 id="semana-titulo">📊 ÚLTIMOS 7 DIAS</h3>
+          <div
+            class="grafico-semana"
+            id="grafico-semana"
+            role="img"
+            aria-label="Gráfico de atividade dos últimos 7 dias"
+          >
+            <!-- Será preenchido dinamicamente -->
           </div>
+        </section>
 
-          <!-- Botões de Ação -->
-          <div class="acoes-estatisticas">
-            <button class="botao-acao" id="exportar-dados"><i class="fas fa-download"></i> Exportar</button>
-            <button class="botao-acao botao-resetar" id="resetar-estatisticas">
-              <i class="fas fa-trash"></i> Resetar
-            </button>
-          </div>
-        </div>
+        <!-- Ações -->
+        <section class="acoes-estatisticas" role="group" aria-label="Ações das estatísticas">
+          <button class="botao-acao" id="exportar-dados" type="button">
+            <i class="fas fa-download" aria-hidden="true"></i> Exportar
+          </button>
+          <button class="botao-acao botao-resetar" id="resetar-estatisticas" type="button">
+            <i class="fas fa-trash" aria-hidden="true"></i> Resetar
+          </button>
+        </section>
       </div>
-    </main>
+    </div>
+
+    <!-- Classe para elementos apenas para leitores de tela -->
+    <style>
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
   </body>
 </html>
