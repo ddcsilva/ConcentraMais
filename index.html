@@ -46,7 +46,15 @@
             <li><button class="botao botao-descanso-curto" data-modo="descanso-curto">Descanso Curto</button></li>
             <li><button class="botao botao-descanso-longo" data-modo="descanso-longo">Descanso Longo</button></li>
           </ul>
-          <div id="temporizador" class="temporizador">25:00</div>
+          <div class="container-temporizador">
+            <div class="indicador-progresso">
+              <svg class="circulo-progresso" viewBox="0 0 160 160">
+                <circle class="circulo-fundo" cx="80" cy="80" r="80"></circle>
+                <circle class="circulo-preenchimento" cx="80" cy="80" r="80" id="circulo-progresso"></circle>
+              </svg>
+            </div>
+            <div id="temporizador" class="temporizador">25:00</div>
+          </div>
           <div class="controles">
             <label class="alternancia">
               <input type="checkbox" id="alternancia-musica" />

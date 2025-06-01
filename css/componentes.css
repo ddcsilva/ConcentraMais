@@ -3,12 +3,75 @@
    ============================ */
 
 /* === TEMPORIZADOR === */
-.temporizador {
-  font-size: 4.2rem;
+.container-temporizador {
+  position: relative;
+  display: inline-block;
   margin-bottom: var(--espacamento-extra);
+  padding: 15px;
+}
+
+.temporizador {
+  font-size: 3.8rem;
   font-weight: 300;
   letter-spacing: 2px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* === INDICADOR DE PROGRESSO === */
+.indicador-progresso {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160px;
+  height: 160px;
+  z-index: 1;
+}
+
+.circulo-progresso {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.circulo-fundo {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 2;
+}
+
+.circulo-preenchimento {
+  fill: none;
+  stroke: var(--cor-secundaria);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 502;
+  stroke-dashoffset: 502;
+  transition: stroke-dashoffset 1s ease-in-out;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.15));
+}
+
+/* Animação do pulso quando completa */
+.circulo-preenchimento.completo {
+  animation: pulsoCompleto 0.6s ease-in-out;
+}
+
+@keyframes pulsoCompleto {
+  0% {
+    stroke-width: 2;
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.15));
+  }
+  50% {
+    stroke-width: 4;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+  }
+  100% {
+    stroke-width: 2;
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.15));
+  }
 }
 
 /* === BOTÕES BÁSICOS === */

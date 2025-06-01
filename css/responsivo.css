@@ -14,13 +14,18 @@
   }
 
   .temporizador {
-    font-size: 3.2rem;
+    font-size: 3rem;
     margin-bottom: var(--espacamento-grande);
   }
 
-  /* Layout ajustado */
-  .secao-temporizador {
-    padding: var(--espacamento-grande);
+  /* Indicador de progresso responsivo */
+  .indicador-progresso {
+    width: 140px;
+    height: 140px;
+  }
+
+  .container-temporizador {
+    padding: 12px;
   }
 
   .menu-cartao {
@@ -71,7 +76,17 @@
   }
 
   .temporizador {
-    font-size: 2.8rem;
+    font-size: 2.6rem;
+  }
+
+  /* Indicador de progresso ainda menor */
+  .indicador-progresso {
+    width: 120px;
+    height: 120px;
+  }
+
+  .container-temporizador {
+    padding: 8px;
   }
 
   .secao-temporizador {
@@ -104,7 +119,17 @@
   }
 
   .temporizador {
-    font-size: 5rem;
+    font-size: 4.5rem;
+  }
+
+  /* Indicador de progresso maior para telas grandes */
+  .indicador-progresso {
+    width: 180px;
+    height: 180px;
+  }
+
+  .container-temporizador {
+    padding: 20px;
   }
 
   .secao-temporizador {

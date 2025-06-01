@@ -20,6 +20,7 @@ class ConcentraMais {
     this.interface.atualizarSelecaoBotaoModo("foco");
     this.interface.habilitarControlesMusica(false);
     this.interface.habilitarBotaoReiniciar(false);
+    this.interface.reiniciarProgresso();
 
     // Registrar todos os eventos
     this.registrarEventos();
@@ -41,6 +42,7 @@ class ConcentraMais {
     this.interface.habilitarBotoesModos(true);
     this.interface.habilitarControlesMusica(false);
     this.interface.habilitarBotaoReiniciar(false);
+    this.interface.reiniciarProgresso();
     this.pararTodaMusica();
   }
 
@@ -77,6 +79,7 @@ class ConcentraMais {
     this.interface.habilitarBotoesModos(true);
     this.interface.habilitarControlesMusica(false);
     this.interface.habilitarBotaoReiniciar(false);
+    this.interface.reiniciarProgresso();
     this.pararTodaMusica();
   }
 
@@ -98,11 +101,21 @@ class ConcentraMais {
   }
 
   aoAtualizarTempo(tempoEmSegundos) {
+    const modoAtual = this.temporizador.obterModoAtual();
+    const tempoTotal = CONFIGURACOES.tempos[modoAtual];
+
+    // Atualizar display do tempo
     this.interface.atualizarDisplayTempo(tempoEmSegundos);
+
+    // Atualizar indicador de progresso
+    this.interface.atualizarProgresso(tempoEmSegundos, tempoTotal);
   }
 
   aoCompletarTempo() {
     const modoAtual = this.temporizador.obterModoAtual();
+
+    // Animar conclusão do progresso
+    this.interface.animarProgressoCompleto();
 
     // Tocar som de término
     this.gerenciadorSons.tocarSomTermino();

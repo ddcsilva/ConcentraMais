@@ -18,6 +18,7 @@ class ControladorInterface {
       botaoFecharModal: document.querySelector("#fechar-modal"),
       rotuloMusica: document.querySelector(".rotulo-alternancia"),
       botaoShuffle: document.querySelector("#botao-shuffle"),
+      circuloProgresso: document.querySelector("#circulo-progresso"),
     };
   }
 
@@ -54,6 +55,35 @@ class ControladorInterface {
     const icone = estaRodando ? "pause" : "play";
     const texto = estaRodando ? "Pausar" : "Iniciar";
     this.elementos.botaoIniciarPausar.innerHTML = `<i class="fas fa-${icone} icone-botao"></i> ${texto}`;
+  }
+
+  // === MÉTODOS DO INDICADOR DE PROGRESSO ===
+  atualizarProgresso(tempoRestante, tempoTotal) {
+    if (!this.elementos.circuloProgresso) return;
+
+    const progresso = 1 - tempoRestante / tempoTotal;
+    const circunferencia = 2 * Math.PI * 80; // raio = 80 (para width/height de 160px)
+    const offset = circunferencia * (1 - progresso);
+
+    this.elementos.circuloProgresso.style.strokeDashoffset = offset;
+  }
+
+  reiniciarProgresso() {
+    if (!this.elementos.circuloProgresso) return;
+
+    this.elementos.circuloProgresso.style.strokeDashoffset = 502; // circunferência completa
+    this.elementos.circuloProgresso.classList.remove("completo");
+  }
+
+  animarProgressoCompleto() {
+    if (!this.elementos.circuloProgresso) return;
+
+    this.elementos.circuloProgresso.classList.add("completo");
+
+    // Remover a classe após a animação
+    setTimeout(() => {
+      this.elementos.circuloProgresso.classList.remove("completo");
+    }, 600);
   }
 
   // === MÉTODOS DE CONTROLE DE ESTADO DOS ELEMENTOS ===
