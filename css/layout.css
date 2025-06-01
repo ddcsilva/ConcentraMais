@@ -1,0 +1,73 @@
+/* ============================
+   LAYOUT E ESTRUTURA
+   ============================ */
+
+.cabecalho {
+  margin-bottom: var(--espacamento-medio);
+}
+
+.banner {
+  margin-bottom: var(--espacamento-grande);
+}
+
+.secao-temporizador {
+  background: var(--fundo-cartao);
+  padding: var(--espacamento-secao);
+  border-radius: var(--raio-borda-grande);
+  box-shadow: var(--sombra-padrao);
+  position: relative;
+}
+
+.menu-cartao {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: var(--espacamento-extra);
+  flex-wrap: wrap;
+  gap: var(--espacamento-pequeno);
+}
+
+.controles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--espacamento-extra);
+  gap: var(--espacamento-medio);
+}
+
+.botoes-controle {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--espacamento-medio);
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.rodape {
+  margin-top: var(--espacamento-grande);
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* ============================
+   ÍCONES E ELEMENTOS FLUTUANTES
+   ============================ */
+
+.info-icon {
+  position: absolute;
+  top: var(--espacamento-grande);
+  right: var(--espacamento-grande);
+  font-size: 1.4rem;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity var(--transicao-rapida);
+}
+
+.info-icon:hover {
+  opacity: 1;
+}
+
+.icone-botao {
+  margin-right: var(--espacamento-pequeno);
+}

@@ -1,0 +1,190 @@
+/* ============================
+   COMPONENTES REUTILIZÁVEIS
+   ============================ */
+
+/* === TEMPORIZADOR === */
+.temporizador {
+  font-size: 4.2rem;
+  margin-bottom: var(--espacamento-extra);
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* === BOTÕES BÁSICOS === */
+.botao {
+  background: none;
+  border: none;
+  color: var(--cor-secundaria);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: var(--espacamento-medio) var(--espacamento-grande);
+  transition: all var(--transicao-rapida);
+  margin: var(--espacamento-minimo);
+  border-radius: var(--raio-borda);
+  min-width: 110px;
+  position: relative;
+  overflow: hidden;
+}
+
+.botao:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.botao.selecionado {
+  background: var(--cor-primaria);
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-padrao);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.botao.selecionado:hover {
+  background: var(--botao-hover);
+}
+
+.botao.desabilitado {
+  color: var(--cor-desabilitada);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* === BOTÕES DE AÇÃO === */
+.botao-principal,
+.botao-reiniciar {
+  background: var(--cor-botao);
+  border: none;
+  padding: var(--espacamento-grande) var(--espacamento-extra);
+  border-radius: var(--raio-borda);
+  cursor: pointer;
+  color: var(--cor-secundaria);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all var(--transicao-rapida);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  margin: 0;
+  min-width: 140px;
+  height: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.botao-principal:hover,
+.botao-reiniciar:hover {
+  background: var(--botao-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.botao-principal:active,
+.botao-reiniciar:active {
+  transform: translateY(0);
+}
+
+.botao-reiniciar.desabilitado {
+  background: var(--cor-desabilitada);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.botao-reiniciar.desabilitado:hover {
+  transform: none;
+  box-shadow: var(--sombra-padrao);
+}
+
+/* === BOTÃO SHUFFLE === */
+.botao-shuffle {
+  background: var(--cor-botao);
+  border: none;
+  padding: var(--espacamento-medio);
+  border-radius: var(--raio-borda);
+  cursor: pointer;
+  color: var(--cor-secundaria);
+  font-size: 1rem;
+  transition: all var(--transicao-rapida);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.botao-shuffle:hover {
+  background: var(--botao-hover);
+  transform: translateY(-1px);
+}
+
+.botao-shuffle:active {
+  transform: translateY(0);
+}
+
+.botao-shuffle.desabilitado {
+  background: var(--cor-desabilitada);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* === TOGGLE SWITCH (ALTERNÂNCIA) === */
+.alternancia {
+  position: relative;
+  width: 50px;
+  height: 24px;
+}
+
+.alternancia input {
+  display: none;
+}
+
+.alternancia.desabilitado .deslizante {
+  background: #ddd;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.deslizante {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ccc;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: var(--transicao-media);
+}
+
+.deslizante:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: var(--transicao-media);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input:checked + .deslizante {
+  background: var(--cor-botao);
+}
+
+input:checked + .deslizante:before {
+  transform: translateX(26px);
+}
+
+.rotulo-alternancia {
+  margin-left: var(--espacamento-medio);
+  font-size: 0.95rem;
+  user-select: none;
+}
+
+.rotulo-alternancia.desabilitado {
+  color: var(--cor-desabilitada);
+  cursor: not-allowed;
+  opacity: 0.6;
+}

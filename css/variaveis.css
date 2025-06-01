@@ -1,0 +1,55 @@
+/* ============================
+   VARIÁVEIS E CONFIGURAÇÕES
+   ============================ */
+
+:root {
+  /* Cores principais */
+  --cor-primaria: #6a5acd;
+  --cor-secundaria: #ffffff;
+  --cor-desabilitada: #a9a9a9;
+
+  /* Cores dos botões */
+  --cor-botao: #6a5acd;
+  --botao-hover: #7b68ee;
+
+  /* Fundos */
+  --fundo-cartao: rgba(106, 90, 205, 0.2);
+
+  /* Tipografia */
+  --fonte-principal: "Montserrat", sans-serif;
+  --fonte-negrito: "Montserrat", sans-serif;
+
+  /* Tamanhos - Valores otimizados para melhor UX */
+  --raio-borda: 5px;
+  --raio-borda-grande: 10px;
+  --espacamento-minimo: 2px;
+  --espacamento-pequeno: 5px;
+  --espacamento-medio: 12px;
+  --espacamento-grande: 16px;
+  --espacamento-extra: 24px;
+  --espacamento-secao: 30px;
+
+  /* Sombras */
+  --sombra-padrao: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --sombra-modal: rgba(0, 0, 0, 0.5);
+
+  /* Transições */
+  --transicao-rapida: 0.3s;
+  --transicao-media: 0.4s;
+}
+
+/* ============================
+   TEMAS POR MODO
+   ============================ */
+
+[data-modo="foco"] {
+  --degrade-fundo: linear-gradient(180deg, #8b1ff8 0%, #041832 48.44%, #01080e 100%);
+}
+
+[data-modo="descanso-curto"] {
+  --degrade-fundo: linear-gradient(180deg, #0f725c 0%, #041832 48.44%, #01080e 100%);
+}
+
+[data-modo="descanso-longo"] {
+  --degrade-fundo: linear-gradient(180deg, #1875e9 0%, #041832 48.44%, #01080e 100%);
+}

@@ -1,0 +1,117 @@
+/* ============================
+   DESIGN RESPONSIVO
+   ============================ */
+
+/* === TABLETS E SMARTPHONES === */
+@media (max-width: 767px) {
+  /* Tipografia ajustada */
+  .titulo {
+    font-size: 2.2rem;
+  }
+
+  .frase {
+    font-size: 1.2rem;
+  }
+
+  .temporizador {
+    font-size: 3.2rem;
+    margin-bottom: var(--espacamento-grande);
+  }
+
+  /* Layout ajustado */
+  .secao-temporizador {
+    padding: var(--espacamento-grande);
+  }
+
+  .menu-cartao {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espacamento-pequeno);
+  }
+
+  .botao {
+    font-size: 1rem;
+    padding: var(--espacamento-medio) var(--espacamento-grande);
+    width: 200px;
+  }
+
+  .botoes-controle {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espacamento-medio);
+    max-width: 250px;
+  }
+
+  .botao-principal,
+  .botao-reiniciar {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .controles {
+    margin-bottom: var(--espacamento-grande);
+  }
+
+  /* Modal responsivo */
+  .modal-conteudo {
+    width: 95%;
+    margin: var(--espacamento-pequeno);
+    padding: var(--espacamento-grande);
+  }
+}
+
+/* === SMARTPHONES PEQUENOS === */
+@media (max-width: 480px) {
+  .aplicativo {
+    padding: var(--espacamento-pequeno);
+  }
+
+  .titulo {
+    font-size: 2rem;
+  }
+
+  .temporizador {
+    font-size: 2.8rem;
+  }
+
+  .secao-temporizador {
+    padding: var(--espacamento-grande);
+  }
+
+  .info-icon {
+    top: var(--espacamento-medio);
+    right: var(--espacamento-medio);
+    font-size: 1.2rem;
+  }
+
+  .botao {
+    width: 180px;
+  }
+
+  .botoes-controle {
+    max-width: 200px;
+  }
+}
+
+/* === TELAS GRANDES === */
+@media (min-width: 1200px) {
+  .aplicativo {
+    max-width: 600px;
+  }
+
+  .titulo {
+    font-size: 3.2rem;
+  }
+
+  .temporizador {
+    font-size: 5rem;
+  }
+
+  .secao-temporizador {
+    padding: var(--espacamento-extra) 50px;
+  }
+
+  .botoes-controle {
+    max-width: 400px;
+  }
+}

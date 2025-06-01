@@ -1,0 +1,51 @@
+/* ============================
+   ESTILOS BASE E RESET
+   ============================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--fonte-principal);
+}
+
+body {
+  background: var(--degrade-fundo);
+  color: var(--cor-secundaria);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: var(--espacamento-medio);
+}
+
+/* ============================
+   CONTAINER PRINCIPAL
+   ============================ */
+
+.aplicativo {
+  width: 100%;
+  max-width: 500px;
+  padding: var(--espacamento-pequeno);
+}
+
+/* ============================
+   TIPOGRAFIA GLOBAL
+   ============================ */
+
+.titulo {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: var(--espacamento-pequeno);
+}
+
+.frase {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.frase strong {
+  font-weight: 700;
+}
