@@ -2,6 +2,7 @@ class ConcentraMais {
   constructor() {
     this.interface = new ControladorInterface();
     this.gerenciadorSons = new GerenciadorSons();
+    this.gerenciadorNotificacoes = new GerenciadorNotificacoes();
     this.reprodutorMusica = new ReprodutorMusica();
 
     this.temporizador = new Temporizador(
@@ -101,7 +102,19 @@ class ConcentraMais {
   }
 
   aoCompletarTempo() {
+    const modoAtual = this.temporizador.obterModoAtual();
+
+    // Tocar som de término
     this.gerenciadorSons.tocarSomTermino();
+
+    // Mostrar notificação baseada no modo
+    if (modoAtual === "foco") {
+      this.gerenciadorNotificacoes.notificarFimSessaoFoco();
+    } else {
+      this.gerenciadorNotificacoes.notificarFimDescanso(modoAtual);
+    }
+
+    // Atualizar interface
     this.interface.atualizarBotaoIniciarPausar(false);
     this.interface.habilitarBotoesModos(true);
     this.interface.habilitarControlesMusica(false);
