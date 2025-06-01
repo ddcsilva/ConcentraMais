@@ -1,79 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-br" data-modo="foco">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ConcentraMais</title>
-    <link rel="shortcut icon" href="./imagens/favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/e70617fbb4.js" crossorigin="anonymous"></script>
     <script>
-        // Script para evitar cache de arquivos CSS
-        const version = new Date().getTime();
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = `style.css?v=${version}`;
-        document.head.appendChild(link);
+      // Script para evitar cache de arquivos CSS
+      const version = new Date().getTime();
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = `style.css?v=${version}`;
+      document.head.appendChild(link);
     </script>
-    <script src="script.js" defer></script>
-</head>
 
-<body>
+    <!-- Scripts JavaScript organizados em módulos -->
+    <script src="js/configuracoes.js" defer></script>
+    <script src="js/utilitarios.js" defer></script>
+    <script src="js/gerenciador-sons.js" defer></script>
+    <script src="js/reprodutor-musica.js" defer></script>
+    <script src="js/temporizador.js" defer></script>
+    <script src="js/controlador-interface.js" defer></script>
+    <script src="js/aplicacao-principal.js" defer></script>
+  </head>
+
+  <body>
     <main class="aplicativo">
-        <header class="cabecalho">
-            <h1 class="titulo">ConcentraMais</h1>
-        </header>
-        <section class="banner">
-            <h2 class="frase">Aprimore sua eficiência,<br> <strong>concentre-se no essencial</strong>.</h2>
-        </section>
-        <section class="secao-temporizador">
-            <div class="cartao">
-                <i class="fas fa-question-circle info-icon" id="info-icon"></i>
-                <ul class="menu-cartao">
-                    <li><button class="botao botao-foco selecionado" data-modo="foco">Foco</button></li>
-                    <li><button class="botao botao-descanso-curto" data-modo="descanso-curto">Descanso Curto</button></li>
-                    <li><button class="botao botao-descanso-longo" data-modo="descanso-longo">Descanso Longo</button></li>
-                </ul>
-                <div id="temporizador" class="temporizador">25:00</div>
-                <div class="controles">
-                    <label class="alternancia">
-                        <input type="checkbox" id="alternancia-musica">
-                        <span class="deslizante"></span>
-                    </label>
-                    <span class="rotulo-alternancia">Música</span>
-                    <button id="botao-shuffle" class="botao-shuffle" disabled>
-                        <i class="fas fa-random"></i>
-                    </button>
-                </div>
-                <div class="botoes-controle">
-                    <button id="iniciar-pausar" class="botao-principal">
-                        <i class="fas fa-play icone-botao"></i> Iniciar
-                    </button>
-                    <button id="reiniciar" class="botao-reiniciar desabilitado" disabled>
-                        <i class="fas fa-undo icone-botao"></i> Reiniciar
-                    </button>
-                </div>
-            </div>
-        </section>
-        <footer class="rodape">
-            <p>Desenvolvido por Danilo. © 2024</p>
-        </footer>
-
-        <!-- Modal para explicação -->
-        <div id="modal-explicacao" class="modal">
-            <div class="modal-conteudo">
-                <span class="fechar" id="fechar-modal">&times;</span>
-                <h2>O que é Pomodoro?</h2>
-                <p>O método Pomodoro é uma técnica de gerenciamento de tempo que utiliza um temporizador para dividir o trabalho em intervalos, tradicionalmente de 25 minutos, separados por breves intervalos. Cada intervalo é conhecido como um pomodoro, do italiano "tomate", em homenagem ao temporizador de cozinha em forma de tomate usado pelo criador da técnica.</p>
-                <h3>Como usar o ConcentraMais</h3>
-                <p>1. Selecione o modo de foco, descanso curto ou descanso longo.</p>
-                <p>2. Clique em Iniciar para começar o temporizador.</p>
-                <p>3. Trabalhe até que o temporizador indique o fim do período.</p>
-                <p>4. Faça uma pausa durante os intervalos de descanso para recarregar as energias.</p>
-            </div>
+      <header class="cabecalho">
+        <h1 class="titulo">ConcentraMais</h1>
+      </header>
+      <section class="banner">
+        <h2 class="frase">
+          Aprimore sua eficiência,<br />
+          <strong>concentre-se no essencial</strong>.
+        </h2>
+      </section>
+      <section class="secao-temporizador">
+        <div class="cartao">
+          <i class="fas fa-question-circle info-icon" id="info-icon"></i>
+          <ul class="menu-cartao">
+            <li><button class="botao botao-foco selecionado" data-modo="foco">Foco</button></li>
+            <li><button class="botao botao-descanso-curto" data-modo="descanso-curto">Descanso Curto</button></li>
+            <li><button class="botao botao-descanso-longo" data-modo="descanso-longo">Descanso Longo</button></li>
+          </ul>
+          <div id="temporizador" class="temporizador">25:00</div>
+          <div class="controles">
+            <label class="alternancia">
+              <input type="checkbox" id="alternancia-musica" />
+              <span class="deslizante"></span>
+            </label>
+            <span class="rotulo-alternancia">Música</span>
+            <button id="botao-shuffle" class="botao-shuffle" disabled>
+              <i class="fas fa-random"></i>
+            </button>
+          </div>
+          <div class="botoes-controle">
+            <button id="iniciar-pausar" class="botao-principal"><i class="fas fa-play icone-botao"></i> Iniciar</button>
+            <button id="reiniciar" class="botao-reiniciar desabilitado" disabled>
+              <i class="fas fa-undo icone-botao"></i> Reiniciar
+            </button>
+          </div>
         </div>
-    </main>
-</body>
+      </section>
+      <footer class="rodape">
+        <p>Desenvolvido por Danilo. © 2024</p>
+      </footer>
 
+      <!-- Modal para explicação -->
+      <div id="modal-explicacao" class="modal">
+        <div class="modal-conteudo">
+          <span class="fechar" id="fechar-modal">&times;</span>
+          <h2>O que é Pomodoro?</h2>
+          <p>
+            O método Pomodoro é uma técnica de gerenciamento de tempo que utiliza um temporizador para dividir o
+            trabalho em intervalos, tradicionalmente de 25 minutos, separados por breves intervalos. Cada intervalo é
+            conhecido como um pomodoro, do italiano "tomate", em homenagem ao temporizador de cozinha em forma de tomate
+            usado pelo criador da técnica.
+          </p>
+          <h3>Como usar o ConcentraMais</h3>
+          <p>1. Selecione o modo de foco, descanso curto ou descanso longo.</p>
+          <p>2. Clique em Iniciar para começar o temporizador.</p>
+          <p>3. Trabalhe até que o temporizador indique o fim do período.</p>
+          <p>4. Faça uma pausa durante os intervalos de descanso para recarregar as energias.</p>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
