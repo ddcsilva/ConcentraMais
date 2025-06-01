@@ -3,6 +3,7 @@ class ConcentraMais {
     this.interface = new ControladorInterface();
     this.gerenciadorSons = new GerenciadorSons();
     this.gerenciadorNotificacoes = new GerenciadorNotificacoes();
+    this.gerenciadorEstatisticas = new GerenciadorEstatisticas();
     this.reprodutorMusica = new ReprodutorMusica();
 
     this.temporizador = new Temporizador(
@@ -32,6 +33,10 @@ class ConcentraMais {
     this.interface.adicionarListenerBotaoReiniciar(() => this.aoClicarReiniciar());
     this.interface.adicionarListenerCheckboxMusica(() => this.aoAlternarMusica());
     this.interface.adicionarListenerBotaoShuffle(() => this.aoClicarShuffle());
+
+    // Eventos de estatísticas
+    this.interface.adicionarListenerExportarDados(() => this.aoExportarDados());
+    this.interface.adicionarListenerResetarEstatisticas(() => this.aoResetarEstatisticas());
   }
 
   aoAlterarModo(modo) {
@@ -114,6 +119,12 @@ class ConcentraMais {
   aoCompletarTempo() {
     const modoAtual = this.temporizador.obterModoAtual();
 
+    // Registrar sessão nas estatísticas (só para modo foco)
+    if (modoAtual === "foco") {
+      const tempoEmMinutos = CONFIGURACOES.tempos[modoAtual] / 60;
+      this.gerenciadorEstatisticas.registrarSessaoCompleta(modoAtual, tempoEmMinutos);
+    }
+
     // Animar conclusão do progresso
     this.interface.animarProgressoCompleto();
 
@@ -134,8 +145,55 @@ class ConcentraMais {
     this.interface.habilitarBotaoReiniciar(false);
     this.pararTodaMusica();
   }
+
+  // === MÉTODOS DE ESTATÍSTICAS ===
+  aoExportarDados() {
+    const dados = this.gerenciadorEstatisticas.exportarDados();
+    const dataFormatada = new Date().toLocaleDateString('pt-BR');
+    const nomeArquivo = `concentraMais_estatisticas_${dataFormatada.replace(/\//g, '-')}.json`;
+
+    const blob = new Blob([JSON.stringify(dados, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = nomeArquivo;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+
+  aoResetarEstatisticas() {
+    if (confirm('Tem certeza que deseja resetar todas as estatísticas? Esta ação não pode ser desfeita.')) {
+      this.gerenciadorEstatisticas.resetarEstatisticas();
+      this.atualizarEstatisticasInterface();
+      alert('Estatísticas resetadas com sucesso!');
+    }
+  }
+
+  atualizarEstatisticasInterface() {
+    const estatisticasHoje = this.gerenciadorEstatisticas.obterEstatisticasHoje();
+    const estatisticasGerais = this.gerenciadorEstatisticas.obterEstatisticasGerais();
+    const dadosSemana = this.gerenciadorEstatisticas.obterEstatisticasSemana();
+
+    this.interface.atualizarEstatisticasInterface(
+      estatisticasHoje,
+      estatisticasGerais,
+      dadosSemana,
+      this.gerenciadorEstatisticas
+    );
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  new ConcentraMais();
+  const app = new ConcentraMais();
+
+  // Adicionar listener para atualizar estatísticas ao abrir o modal
+  const botaoEstatisticas = document.querySelector("#botao-estatisticas");
+  if (botaoEstatisticas) {
+    botaoEstatisticas.addEventListener("click", () => {
+      setTimeout(() => app.atualizarEstatisticasInterface(), 100);
+    });
+  }
 });

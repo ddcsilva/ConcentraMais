@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/componentes.css" />
     <link rel="stylesheet" href="css/modal.css" />
+    <link rel="stylesheet" href="css/estatisticas.css" />
     <link rel="stylesheet" href="css/responsivo.css" />
 
     <!-- Scripts JavaScript organizados em módulos -->
@@ -21,6 +22,7 @@
     <script src="js/utilitarios.js" defer></script>
     <script src="js/gerenciador-sons.js" defer></script>
     <script src="js/gerenciador-notificacoes.js" defer></script>
+    <script src="js/gerenciador-estatisticas.js" defer></script>
     <script src="js/reprodutor-musica.js" defer></script>
     <script src="js/temporizador.js" defer></script>
     <script src="js/controlador-interface.js" defer></script>
@@ -31,6 +33,9 @@
     <main class="aplicativo">
       <header class="cabecalho">
         <h1 class="titulo">ConcentraMais</h1>
+        <button class="botao-estatisticas" id="botao-estatisticas" title="Ver Estatísticas">
+          <i class="fas fa-chart-bar"></i>
+        </button>
       </header>
       <section class="banner">
         <h2 class="frase">
@@ -93,6 +98,73 @@
           <p>2. Clique em Iniciar para começar o temporizador.</p>
           <p>3. Trabalhe até que o temporizador indique o fim do período.</p>
           <p>4. Faça uma pausa durante os intervalos de descanso para recarregar as energias.</p>
+        </div>
+      </div>
+
+      <!-- Modal de Estatísticas -->
+      <div id="modal-estatisticas" class="modal">
+        <div class="modal-conteudo modal-estatisticas">
+          <span class="fechar" id="fechar-modal-estatisticas">&times;</span>
+
+          <h2><i class="fas fa-chart-bar"></i> Suas Estatísticas</h2>
+
+          <!-- Estatísticas de Hoje -->
+          <div class="secao-estatisticas">
+            <h3>📅 HOJE</h3>
+            <div class="cards-estatisticas">
+              <div class="card-estatistica">
+                <div class="numero-estatistica" id="sessoes-hoje">0</div>
+                <div class="label-estatistica">Sessões<br />Completas</div>
+              </div>
+              <div class="card-estatistica">
+                <div class="numero-estatistica" id="tempo-hoje">0min</div>
+                <div class="label-estatistica">Tempo<br />Focado</div>
+              </div>
+              <div class="card-estatistica">
+                <div class="numero-estatistica" id="sequencia-atual">0</div>
+                <div class="label-estatistica">Sequência<br />Atual</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Estatísticas Gerais -->
+          <div class="secao-estatisticas">
+            <h3>🏆 ESTATÍSTICAS GERAIS</h3>
+            <div class="cards-estatisticas">
+              <div class="card-estatistica">
+                <div class="numero-estatistica" id="total-sessoes">0</div>
+                <div class="label-estatistica">Total de<br />Sessões</div>
+              </div>
+              <div class="card-estatistica">
+                <div class="numero-estatistica" id="tempo-total">0h</div>
+                <div class="label-estatistica">Tempo Total<br />Focado</div>
+              </div>
+              <div class="card-estatistica">
+                <div class="numero-estatistica" id="melhor-sequencia">0</div>
+                <div class="label-estatistica">Melhor<br />Sequência</div>
+              </div>
+              <div class="card-estatistica">
+                <div class="numero-estatistica" id="dias-ativos">0</div>
+                <div class="label-estatistica">Dias<br />Ativos</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gráfico da Semana -->
+          <div class="secao-estatisticas">
+            <h3>📊 ÚLTIMOS 7 DIAS</h3>
+            <div class="grafico-semana" id="grafico-semana">
+              <!-- Será preenchido dinamicamente -->
+            </div>
+          </div>
+
+          <!-- Botões de Ação -->
+          <div class="acoes-estatisticas">
+            <button class="botao-acao" id="exportar-dados"><i class="fas fa-download"></i> Exportar</button>
+            <button class="botao-acao botao-resetar" id="resetar-estatisticas">
+              <i class="fas fa-trash"></i> Resetar
+            </button>
+          </div>
         </div>
       </div>
     </main>

@@ -1,0 +1,356 @@
+/* ============================
+   ESTILOS DO MODAL DE ESTATÍSTICAS
+   ============================ */
+
+/* === MODAL DE ESTATÍSTICAS === */
+.modal-estatisticas {
+  max-width: 550px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 0;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* === CABEÇALHO DO MODAL === */
+.modal-estatisticas .fechar {
+  position: absolute;
+  top: var(--espacamento-grande);
+  right: var(--espacamento-grande);
+  font-size: 1.8rem;
+  z-index: 10;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color var(--transicao-rapida);
+}
+
+.modal-estatisticas .fechar:hover {
+  color: var(--cor-secundaria);
+}
+
+.modal-estatisticas h2 {
+  color: var(--cor-secundaria);
+  margin: 0 0 var(--espacamento-extra) 0;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  padding: var(--espacamento-extra) var(--espacamento-extra) 0;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-estatisticas h2 i {
+  margin-right: var(--espacamento-medio);
+  color: var(--cor-primaria);
+  font-size: 1.4rem;
+}
+
+/* === CONTEÚDO DO MODAL === */
+.modal-estatisticas > div:not(.modal-conteudo) {
+  padding: 0 var(--espacamento-extra) var(--espacamento-extra);
+}
+
+/* === SEÇÕES DE ESTATÍSTICAS === */
+.secao-estatisticas {
+  margin-bottom: var(--espacamento-extra);
+  padding: 0 var(--espacamento-extra);
+}
+
+.secao-estatisticas:first-of-type {
+  padding-top: var(--espacamento-grande);
+}
+
+.secao-estatisticas h3 {
+  color: var(--cor-secundaria);
+  margin-bottom: var(--espacamento-grande);
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: var(--espacamento-pequeno);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+}
+
+/* === CARDS DE ESTATÍSTICAS === */
+.cards-estatisticas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: var(--espacamento-medio);
+  margin-bottom: var(--espacamento-extra);
+}
+
+.card-estatistica {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: var(--espacamento-grande) var(--espacamento-medio);
+  text-align: center;
+  transition: all var(--transicao-media);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-estatistica::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria));
+  opacity: 0;
+  transition: opacity var(--transicao-media);
+}
+
+.card-estatistica:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card-estatistica:hover::before {
+  opacity: 1;
+}
+
+.numero-estatistica {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--cor-primaria);
+  margin-bottom: var(--espacamento-pequeno);
+  line-height: 1;
+}
+
+.label-estatistica {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+/* === GRÁFICO DA SEMANA === */
+.grafico-semana {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  height: 100px;
+  padding: var(--espacamento-grande);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: var(--espacamento-extra);
+  position: relative;
+}
+
+.grafico-semana::before {
+  content: "";
+  position: absolute;
+  bottom: 30px;
+  left: var(--espacamento-grande);
+  right: var(--espacamento-grande);
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.barra-dia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  margin: 0 3px;
+}
+
+.barra {
+  width: 100%;
+  max-width: 28px;
+  background: linear-gradient(0deg, var(--cor-primaria), rgba(255, 255, 255, 0.8));
+  border-radius: 4px 4px 0 0;
+  margin-bottom: var(--espacamento-pequeno);
+  transition: all var(--transicao-media);
+  position: relative;
+  min-height: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.barra:hover {
+  background: linear-gradient(0deg, var(--cor-secundaria), rgba(255, 255, 255, 0.9));
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.barra.sem-dados {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+}
+
+.barra.sem-dados:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: none;
+}
+
+.label-dia {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.tooltip-barra {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.95);
+  color: white;
+  padding: var(--espacamento-pequeno) var(--espacamento-medio);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transicao-rapida);
+  z-index: 10;
+  margin-bottom: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip-barra::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.95);
+}
+
+.barra:hover .tooltip-barra {
+  opacity: 1;
+}
+
+/* === BOTÕES DE AÇÃO === */
+.acoes-estatisticas {
+  display: flex;
+  gap: var(--espacamento-medio);
+  justify-content: center;
+  margin-top: 0;
+  padding: var(--espacamento-grande) var(--espacamento-extra);
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.botao-acao {
+  background: linear-gradient(135deg, var(--cor-botao), rgba(255, 255, 255, 0.1));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--cor-secundaria);
+  padding: var(--espacamento-medio) var(--espacamento-grande);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all var(--transicao-rapida);
+  display: flex;
+  align-items: center;
+  gap: var(--espacamento-pequeno);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.botao-acao:hover {
+  background: linear-gradient(135deg, var(--botao-hover), rgba(255, 255, 255, 0.15));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.botao-acao.botao-resetar {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  border-color: rgba(220, 53, 69, 0.3);
+}
+
+.botao-acao.botao-resetar:hover {
+  background: linear-gradient(135deg, #c82333, #bd2130);
+  box-shadow: 0 6px 15px rgba(220, 53, 69, 0.3);
+}
+
+/* === ESTADO VAZIO === */
+.estado-vazio {
+  text-align: center;
+  padding: var(--espacamento-extra);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.estado-vazio i {
+  font-size: 3rem;
+  margin-bottom: var(--espacamento-grande);
+  opacity: 0.5;
+}
+
+.estado-vazio h4 {
+  font-size: 1.2rem;
+  margin-bottom: var(--espacamento-medio);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.estado-vazio p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* === RESPONSIVIDADE === */
+@media (max-width: 767px) {
+  .modal-estatisticas {
+    max-width: 95vw;
+    max-height: 90vh;
+  }
+
+  .cards-estatisticas {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--espacamento-pequeno);
+  }
+
+  .card-estatistica {
+    padding: var(--espacamento-medio);
+  }
+
+  .numero-estatistica {
+    font-size: 1.5rem;
+  }
+
+  .grafico-semana {
+    height: 80px;
+    padding: var(--espacamento-medio);
+  }
+
+  .acoes-estatisticas {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espacamento-pequeno);
+  }
+
+  .botao-acao {
+    width: 100%;
+    max-width: 200px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards-estatisticas {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-estatisticas h2 {
+    font-size: 1.4rem;
+    padding: var(--espacamento-grande);
+  }
+
+  .secao-estatisticas {
+    padding: 0 var(--espacamento-grande);
+  }
+
+  .acoes-estatisticas {
+    padding: var(--espacamento-medio);
+  }
+}

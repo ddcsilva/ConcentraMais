@@ -63,6 +63,15 @@
     margin: var(--espacamento-pequeno);
     padding: var(--espacamento-grande);
   }
+
+  /* Botão de estatísticas responsivo */
+  .botao-estatisticas {
+    top: var(--espacamento-medio);
+    right: var(--espacamento-medio);
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
 }
 
 /* === SMARTPHONES PEQUENOS === */
@@ -105,6 +114,15 @@
 
   .botoes-controle {
     max-width: 200px;
+  }
+
+  /* Botão de estatísticas ainda menor */
+  .botao-estatisticas {
+    top: var(--espacamento-pequeno);
+    right: var(--espacamento-pequeno);
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
   }
 }
 
