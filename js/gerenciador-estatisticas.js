@@ -45,19 +45,21 @@ class GerenciadorEstatisticas {
 
     // Resetar estatísticas diárias se mudou o dia
     if (this.estatisticas.ultimaData !== hoje) {
+      // Calcular diferença de dias **antes** de atualizar a última data
+      const ultimaDataArmazenada = new Date(this.estatisticas.ultimaData);
+      const dataAtual = new Date(hoje);
+      const diferencaDias = Math.floor(
+        (dataAtual - ultimaDataArmazenada) / (1000 * 60 * 60 * 24)
+      );
+
       this.estatisticas.sessoesHoje = 0;
       this.estatisticas.tempoTotalHoje = 0;
-      this.estatisticas.ultimaData = hoje;
-
-      // Se passou mais de um dia, resetar sequência
-      const ultimaData = new Date(this.estatisticas.ultimaData);
-      const dataAtual = new Date(hoje);
-      const diferencaDias = Math.floor((dataAtual - ultimaData) / (1000 * 60 * 60 * 24));
 
       if (diferencaDias > 1) {
         this.estatisticas.sequenciaAtual = 0;
       }
 
+      this.estatisticas.ultimaData = hoje;
       this.salvarEstatisticas();
     }
   }
